@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hasil Riset Masyarakat - Galeri</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Style untuk tab */
+        .tab-container {
+            margin-bottom: 20px;
+        }
+
+        .tab-buttons {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .tab-button {
+            padding: 10px 15px;
+            cursor: pointer;
+            border: none;
+            background-color: #f9f9f9;
+            color: #555;
+            border-radius: 5px 5px 0 0;
+            margin-right: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .tab-button.active {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .tab-button:hover {
+            background-color: #e9ecef;
+            color: #007bff;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .gallery-grid img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-chart-bar"></i> RPTRA
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="tentang-kami.html">Tentang Kami</a></li>
+                    <li><a href="jadwal-kegiatan.html">Jadwal Kegiatan</a></li>
+                    <li><a href="galeri.html">Galeri</a></li>
+                    <li><a href="aspirasi-pengaduan.html">Form Aspirasi dan Pengaduan</a></li>
+                    <li><a href="kontak.html">Kontak</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="tab-container">
+            <div class="container">
+                <div class="tab-buttons">
+                    <button class="tab-button active" data-tab="semua-gambar"><i class="fas fa-images"></i>Dokumentasi</button>
+                </div>
+
+                <div id="semua-gambar" class="tab-content active section bg-alt">
+                    <h2><i class="fas fa-images"></i> Semua Dokumentasi</h2>
+                    <p class="lead">Semua dokumentasi visual dari riset dan kegiatan.</p>
+                    <div class="gallery-grid">
+                        <img src="img/grafik1.png" alt="Grafik 1">
+                        <img src="img/grafik2.png" alt="Grafik 2">
+                        <img src="img/grafik3.png" alt="Grafik 3">
+                        <img src="img/hero-image.svg" alt="Ilustrasi 1">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Hasil Riset Kita. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const tabId = button.dataset.tab;
+
+                // Non-aktifkan semua tombol dan konten tab
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+
+                // Aktifkan tombol dan konten tab yang diklik
+                button.classList.add('active');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

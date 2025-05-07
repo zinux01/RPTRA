@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hasil Riset Masyarakat - Tentang Kami</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Style untuk tab */
+        .tab-container {
+            margin-bottom: 20px;
+        }
+
+        .tab-buttons {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .tab-button {
+            padding: 10px 15px;
+            cursor: pointer;
+            border: none;
+            background-color: #f9f9f9;
+            color: #555;
+            border-radius: 5px 5px 0 0;
+            margin-right: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .tab-button.active {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .tab-button:hover {
+            background-color: #e9ecef;
+            color: #007bff;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Style untuk footer agar selalu di bawah */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Memastikan body minimal setinggi viewport */
+        }
+
+        main {
+            flex-grow: 1; /* Membuat main area tumbuh mengisi sisa ruang */
+            margin-bottom: 20px; /* Optional: Beri jarak antara main dan footer */
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        footer .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-chart-bar"></i> RPTRA
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="tentang-kami.html">Tentang Kami</a></li>
+                    <li><a href="jadwal-kegiatan.html">Jadwal Kegiatan</a></li>
+                    <li><a href="galeri.html">Galeri</a></li>
+                    <li><a href="aspirasi-pengaduan.html">Form Aspirasi dan Pengaduan</a></li>
+                    <li><a href="kontak.html">Kontak</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="tab-container">
+            <div class="container">
+                <div class="tab-buttons">
+                    <button class="tab-button active" data-tab="metodologi-tab"><i class="fas fa-search"></i> Metodologi</button>
+                    <button class="tab-button" data-tab="tentang-riset-tab"><i class="fas fa-info-circle"></i> Tentang Riset</button>
+                </div>
+
+                <div id="metodologi-tab" class="tab-content active section">
+                    <h2><i class="fas fa-search"></i> Metodologi Penelitian</h2>
+                    <p>Penelitian ini menggunakan pendekatan [sebutkan pendekatan, misal: kuantitatif dan kualitatif] dengan metode pengumpulan data berupa [sebutkan metode, misal: survei online, wawancara mendalam, focus group discussion]. Sampel penelitian melibatkan [sebutkan jumlah dan karakteristik sampel]. Proses analisis data menggunakan [sebutkan teknik analisis].</p>
+                    <div class="methodology-steps">
+                        <div class="step">
+                            <span class="step-number">1</span>
+                            <h3>Perencanaan</h3>
+                            <p>Deskripsi singkat tahap perencanaan.</p>
+                        </div>
+                        <div class="step">
+                            <span class="step-number">2</span>
+                            <h3>Pengumpulan Data</h3>
+                            <p>Deskripsi singkat tahap pengumpulan data.</p>
+                        </div>
+                        <div class="step">
+                            <span class="step-number">3</span>
+                            <h3>Analisis Data</h3>
+                            <p>Deskripsi singkat tahap analisis data.</p>
+                        </div>
+                        <div class="step">
+                            <span class="step-number">4</span>
+                            <h3>Pelaporan</h3>
+                            <p>Deskripsi singkat tahap pelaporan.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="tentang-riset-tab" class="tab-content section">
+                    <h2><i class="fas fa-info-circle"></i> Tentang Riset Ini</h2>
+                    <p>Riset ini bertujuan untuk [sebutkan tujuan riset]. Dilakukan oleh tim [sebutkan nama tim atau organisasi]. Periode penelitian: [sebutkan periode].</p>
+                    <p>Untuk pertanyaan lebih lanjut, silakan hubungi kami di <a href="mailto:info@risetkita.com">info@risetkita.com</a>.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Hasil Riset Kita. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const tabId = button.dataset.tab;
+
+                // Non-aktifkan semua tombol dan konten tab
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+
+                // Aktifkan tombol dan konten tab yang diklik
+                button.classList.add('active');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
